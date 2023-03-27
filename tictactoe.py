@@ -4,6 +4,7 @@ Tic Tac Toe Player
 
 import math
 import copy
+import random
 
 X = "X"
 O = "O"
@@ -65,7 +66,6 @@ def result(board, action):
 
     # If a value exists at the given location raise Exception
     if sample[action[0]][action[1]]:
-        print(board)
         raise Exception("Invalid Position")
 
     # 'board''s copy but with value assigned at that location
@@ -157,7 +157,7 @@ def minimax_helper(board):
     
     # If initial state selects the first choice
     if board == initial_state():
-        return {"position" : _choices[0]}
+        return {"position" : random.choice(_choices)}
     
     _player = player(board)
 
@@ -179,27 +179,26 @@ def minimax_helper(board):
                 action["value"] = value
 
             results.append(action)
-
-        _results = {}
+        
+        reference = None
 
         # Minimax filtering
         if _player == O:
-            minimum = math.inf
+            reference = math.inf
             for action in results:
-                if action["value"] < minimum:
-                    _results = action
-                    minimum = action["value"]
+                if action["value"] < reference:
+                    reference = action["value"]
                     
         elif _player == X:
-            maximum = -math.inf
+            reference = -math.inf
             for action in results:
-                if action["value"] > maximum:
-                    _results = action
-                    maximum = action["value"]
+                if action["value"] > reference:
+                    reference = action["value"]
 
-        results = []
-        # Return the best choice from the list of choices for the given player
-        return _results
+        # Return a random best choice from the list of choices for the given player
+        results = [action for action in results if action["value"] == reference]
+        results = random.choice(results)
+        return results
 
     else:
         # Returns the value of the position
