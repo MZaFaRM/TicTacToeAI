@@ -14,9 +14,9 @@ To make a move, simply click on an empty cell on the grid. The AI will make its 
 ## Getting started
 To run the program either clone the project through:
 ```
-https://github.com/MZaFaRM/TIC-TAC-TOE-AI.git
+https://github.com/MZaFaRM/TicTacToeAI.git
 ```
-or download its [Zip file](https://github.com/MZaFaRM/TIC-TAC-TOE-AI/archive/refs/heads/main.zip).
+or download its [Zip file](https://github.com/MZaFaRM/TicTacToeAI/archive/refs/heads/main.zip).
 
 #### Optional steps
 Create a new environment through
