@@ -18,7 +18,7 @@ https://github.com/MZaFaRM/TicTacToeAI.git
 ```
 or download its [Zip file](https://github.com/MZaFaRM/TicTacToeAI/archive/refs/heads/main.zip).
 
-#### Optional steps
+
 Create a new environment through
 ```
 python -m venv myenv
