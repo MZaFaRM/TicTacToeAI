@@ -31,7 +31,7 @@ Use your mouse to click on either "Play as X" or "Play as O" to choose which pla
 
 
 ## Acknowledgments
-Completed as part of my venture in [CS50AI](https://learning.edx.org/course/course-v1:HarvardX+CS50AI+1T2020/home) From Harvard CS50 hosted on EDx
+Completed as part of my venture in [CS50AI](https://learning.edx.org/course/course-v1:HarvardX+CS50AI+1T2020/home) from Harvard CS50 hosted on EDx
 
 
 
