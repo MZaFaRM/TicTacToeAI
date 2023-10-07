@@ -5,13 +5,15 @@ import time
 import tictactoe as ttt
 
 pygame.init()
-size = width, height = 600, 400
+size = width, height = 600, 500
 
 # Colors
 black = (0, 0, 0)
 white = (255, 255, 255)
 
 screen = pygame.display.set_mode(size)
+image = pygame.image.load('background.gif').convert()
+image = pygame.transform.scale(image, (width, height))
 
 mediumFont = pygame.font.Font("OpenSans-Regular.ttf", 28)
 largeFont = pygame.font.Font("OpenSans-Regular.ttf", 40)
@@ -26,8 +28,8 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-
-    screen.fill(black)
+            
+    screen.blit(image, (0, 0))
 
     # Let user choose a player.
     if user is None:
@@ -79,10 +81,10 @@ while True:
                     tile_origin[1] + i * tile_size,
                     tile_size, tile_size
                 )
-                pygame.draw.rect(screen, white, rect, 3)
+                pygame.draw.rect(screen, white, rect)
 
                 if board[i][j] != ttt.EMPTY:
-                    move = moveFont.render(board[i][j], True, white)
+                    move = moveFont.render(board[i][j], True, black)
                     moveRect = move.get_rect()
                     moveRect.center = rect.center
                     screen.blit(move, moveRect)
@@ -92,6 +94,30 @@ while True:
         game_over = ttt.terminal(board)
         player = ttt.player(board)
 
+        # Draw overlapping edged board for Tic Tac Toe
+        tile_size = 80
+        tile_origin = (width / 2 - (1.5 * tile_size), height / 2 - (1.5 * tile_size))
+
+        # Draw vertical lines
+        for i in range(1, 3):  # Only two vertical lines
+            pygame.draw.line(
+                screen,
+                black,
+                (tile_origin[0] + i * tile_size, tile_origin[1]),
+                (tile_origin[0] + i * tile_size, tile_origin[1] + 3 * tile_size),
+                3
+            )
+
+        # Draw horizontal lines
+        for i in range(1, 3):  # Only two horizontal lines
+            pygame.draw.line(
+                screen,
+                black,
+                (tile_origin[0], tile_origin[1] + i * tile_size),
+                (tile_origin[0] + 3 * tile_size, tile_origin[1] + i * tile_size),
+                3
+            )
+            
         # Show title
         if game_over:
             winner = ttt.winner(board)
