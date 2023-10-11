@@ -105,7 +105,7 @@ while True:
                 black,
                 (tile_origin[0] + i * tile_size, tile_origin[1]),
                 (tile_origin[0] + i * tile_size, tile_origin[1] + 3 * tile_size),
-                3
+                5
             )
 
         # Draw horizontal lines
@@ -115,7 +115,7 @@ while True:
                 black,
                 (tile_origin[0], tile_origin[1] + i * tile_size),
                 (tile_origin[0] + 3 * tile_size, tile_origin[1] + i * tile_size),
-                3
+                5
             )
             
         # Show title
